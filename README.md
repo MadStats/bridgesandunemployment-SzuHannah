@@ -89,8 +89,8 @@
     #leftjoin 2018bridge data with countyemploy data
     employ_bridgepredictors<-multibridge18%>%left_join(county_employ, by = "fips")%>%left_join(county_employ18,by = "fips")
 
-Build Multiple linear regression model: (1) Predictors: Bridge
-data(2018); outcome: unemployment data(2019.01)
+Build Multiple linear regression model:  
+(1)Predictors: Bridge data(2018); outcome: unemployment data(2019.01)
 
     #lm1: y = number of unemployed; x1 = Average Daily traffic(item29); x2=minimum vertical clearance over bridge(item53); x3=number of spans in main unit(item45)
     lm1<-lm(unemployed~countyADT+verticalclearance+spans, data = employ_bridgepredictors)
@@ -146,10 +146,8 @@ data(2018); outcome: unemployment data(2019.01)
     ## Multiple R-squared:  0.05107,    Adjusted R-squared:  0.04562 
     ## F-statistic: 9.365 on 3 and 522 DF,  p-value: 4.875e-06
 
-1.  Predictors: Bridge data(2018), unemployment from previous
-    month(2018.12); outcome: unemployment data(2019.01)
-
-<!-- -->
+(2)Predictors: Bridge data(2018), unemployment from previous
+month(2018.12); outcome: unemployment data(2019.01)
 
     #lm3: y = number of unemployed; x1 = Average Daily traffic(item29); x2 = minimum vertical clearance over bridge(item53);x3 = number of spans in main unit(item45); x4 =number of unemployed
     lm3<-lm(unemployed~countyADT+verticalclearance+spans+unemployedprev, data = employ_bridgepredictors)
